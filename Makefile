@@ -9,7 +9,7 @@ MKDIR = mkdir
 
 # Mod constants
 # Mod full name
-WMOD_TITLE = Prebattle RandomQueue Extended
+WMOD_TITLE = Prebattle RandomQueue Remake
 # One or more of: (pc|android|ios|any)
 WMOD_INITIALTARGETPLATFORM = any
 # (N.N.N[+|[-N.N.N]]|any)
@@ -17,6 +17,7 @@ WMOD_INITIALTARGETPATCH = any
 # (wg|lg|Any)
 WMOD_INITIALTARGETPUBLISHER = any
 
+# Compress to dvpl (n|y)
 WMOD_DVPLIZE = y
 
 # Mod variables
@@ -24,9 +25,9 @@ WMOD_NAME := $(shell echo $(WMOD_TITLE) | tr '[:upper:] ' '[:lower:]-')
 WMOD_TARGETPLATFORM ?= $(WMOD_INITIALTARGETPLATFORM)
 WMOD_TARGETPATCH ?= $(WMOD_INITIALTARGETPATCH)
 WMOD_TARGETPUBLISHER ?= $(WMOD_INITIALTARGETPUBLISHER)
-#WMOD_VERSION=$(shell git tag | head -n 1)
+WMOD_VERSION=$(shell git tag | head -n 1)
 
-WMOD_PACKAGENAME = wotb_$(WMOD_NAME)_v$(WMOD_VERSION)_$(WMOD_TARGETPLATFORM:any=anyplat)_$(WMOD_TARGETPUBLISHER:any=anypub)_$(WMOD_TARGETPATCH:any=anypatch)
+WMOD_PACKAGENAME = wotb_$(WMOD_NAME)_$(WMOD_VERSION)_$(WMOD_TARGETPLATFORM:any=anyplat)_$(WMOD_TARGETPUBLISHER:any=anypub)_$(WMOD_TARGETPATCH:any=anypatch)
 
 WOTB_PACKAGENAME = net.wargaming.wot.blitz
 ifeq ($(WMOD_TARGETPUBLISHER), lg)
@@ -35,6 +36,7 @@ endif
 
 BUILDDIR = build
 MEDIADIR = public/media
+SCRIPTSDIR = scripts
 
 WOTB_DATADIR = Data
 ifeq ($(WMOD_TARGETPLATFORM), android)
@@ -61,10 +63,10 @@ install: build
 uninstall:
 	$(CD) src && $(FIND) -exec rm -r -f $(WMOD_INSTALLDIR)/{} +
 
-description:
-	-
+#description:
+#	scripts/make-desc.sh
 
-#.PHONY: package
+.PHONY: package
 package: build
 	$(CD) $(BUILDDIR) && $(7Z) a $(WMOD_PACKAGENAME).zip $(WOTB_DATADIR)
 
