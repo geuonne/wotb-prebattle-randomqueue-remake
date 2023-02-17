@@ -1,0 +1,10 @@
+This mod revamps the battle queue screen:
+- The tank icon is upscaled to 3x
+- The rest of the elements is moved to the right side
+- The selected game mode's corresponding keyart is displayed as background
+- Other tweaks (display background for the back button, vertically shrink area, occupied by the controls, etc)
+
+Compatibility:
+- Platform: any
+- Game publisher: any
+- Game version: 5.6.0+
