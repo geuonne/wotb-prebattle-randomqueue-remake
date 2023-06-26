@@ -7,6 +7,8 @@ FIND = find
 MKDIR = mkdir
 CUT = cut
 GREP = grep
+ECHO = echo
+SH = sh
 
 CURL = curl
 7Z = 7z
@@ -74,22 +76,29 @@ BUILDDIR = build
 MEDIADIR = public/media
 DISTDIR = dist/general
 TOOLSDIR = tools
-_ROOT != $(PWD)
+_ROOT != $(GIT) rev-parse --show-toplevel
 
 BUILDPLATFORMDIR = $(BUILDDIR)/$(WMOD_PLATFORM)/$(WOTB_PREFIX)
 
-DEPS != find 'src' -type f
+DEPS != find 'src/UI' -type f
 
 
 
 ### Rules
 all: build
 
+# Download assets
+prebuild-gfx: presrc/bg-list.yaml
+	$(MKDIR) -p src/Gfx/Lobby/backgrounds/prebattle
+	$(SH) presrc/bg-dl.sh
+
+prebuild: prebuild-gfx
+
 build: $(DEPS)
 	$(MKDIR) -p $(BUILDPLATFORMDIR)
 	$(CP) -R $(SRCDIR)/* $(BUILDPLATFORMDIR)
 ifeq ($(WMOD_DVPLIZE), y)
-	$(CD) $(BUILDPLATFORMDIR) && $(DVPL) encrypt
+	$(CD) $(BUILDPLATFORMDIR) && $(DVPL) encrypt --delete-original
 endif
 
 install: build
