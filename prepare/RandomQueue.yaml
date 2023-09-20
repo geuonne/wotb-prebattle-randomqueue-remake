@@ -32,8 +32,7 @@ Prototypes:
             - ["int64", "waitSeconds", "battleQueue.waitTime % 60L"]
             - ["string", "waitMinutesFormatted", "when waitMinutes > 9L -> str(waitMinutes), \"0\" + str(waitMinutes)"]
             - ["string", "waitSecondsFormatted", "when waitSeconds > 9L -> str(waitSeconds), \"0\" + str(waitSeconds)"]
-            - ["string", "gameModeIconPath", "when battleQueue.mode.gameMode == eGameMode.Regular or battleQueue.mode.gameMode == eGameMode.Tournament -> \"~res:/Gfx/Shared/icons/icon_game-mode_random_colored\", battleQueue.mode.gameMode == eGameMode.Rating -> \"~res:/Gfx/Shared/icons/icon_game-mode_rating_colored\", battleQueue.mode.gameMode == eGameMode.Arcade or battleQueue.mode.gameMode == eGameMode.Scuffle or battleQueue.mode.gameMode == eGameMode.HellGames or battleQueue.mode.gameMode == eGameMode.Lunar or battleQueue.mode.gameMode == eGameMode.NanoMaps or battleQueue.mode.gameMode == eGameMode.Vampiric or battleQueue.mode.gameMode == eGameMode.BossMode -> \"~res:/Gfx/Shared/icons/icon_game-mode_realistic_colored\", \"\""]
-            - ["string", "gameModeBGPath", "when battleQueue.mode.gameMode == eGameMode.Regular -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_random\", battleQueue.mode.gameMode == eGameMode.Tournament -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_tournament\", battleQueue.mode.gameMode == eGameMode.Rating -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_rating\", battleQueue.mode.gameMode == eGameMode.Arcade -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_madgames\", battleQueue.mode.gameMode == eGameMode.HellGames -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_uprising\", battleQueue.mode.gameMode == eGameMode.Scuffle -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_realistic\", battleQueue.mode.gameMode == eGameMode.Lunar -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_gravity\", battleQueue.mode.gameMode == eGameMode.NanoMaps -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_skirmish\", battleQueue.mode.gameMode == eGameMode.Vampiric -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_burninggames\", battleQueue.mode.gameMode == eGameMode.BossMode -> \"~res:/Gfx/Lobby/backgrounds/prebattle/bg_game-mode_bigboss\", \"\""]
+            - ["string", "gameModeIconPath", "when battleQueue.mode.gameMode == eGameMode.Regular or battleQueue.mode.gameMode == eGameMode.Tournament -> \"~res:/Gfx/Shared/icons/icon_game-mode_random_colored\", battleQueue.mode.gameMode == eGameMode.Rating -> \"~res:/Gfx/Shared/icons/icon_game-mode_rating_colored\", battleQueue.mode.gameMode == eGameMode.Arcade or battleQueue.mode.gameMode == eGameMode.Scuffle or battleQueue.mode.gameMode == eGameMode.HellGames or battleQueue.mode.gameMode == eGameMode.Lunar or battleQueue.mode.gameMode == eGameMode.NanoMaps or battleQueue.mode.gameMode == eGameMode.Vampiric or battleQueue.mode.gameMode == eGameMode.BossMode or battleQueue.mode.gameMode == eGameMode.Gravitizing -> \"~res:/Gfx/Shared/icons/icon_game-mode_realistic_colored\", \"~res:/Gfx/Shared/icons/icon_game-mode_realistic_colored\""]
         UIActionComponent:
             actionsPath: "~res:/UI/Screens3/Lobby/Prebattle/RandomQueue.actions"
     children:
@@ -141,6 +140,20 @@ Prototypes:
                         horizontalPolicy: "PercentOfMaxChild"
                         verticalPolicy: "PercentOfChildrenSum"
                 children:
+                -   class: "UIControl"
+                    name: "BattleLabel"
+                    input: false
+                    classes: "t-subtitle bold white-wild-sand-text"
+                    components:
+                        UITextComponent:
+                            colorInheritType: "COLOR_IGNORE_PARENT"
+                        SizePolicy:
+                            horizontalPolicy: "PercentOfContent"
+                            verticalPolicy: "PercentOfContent"
+                        StyleSheet:
+                            styles: "~res:/UI/Screens3/Font.style.yaml"
+                    bindings:
+                    - ["UITextComponent.text", "battleQueue.mode.gameModeOptions.title"]
                 -   class: "UIControl"
                     name: "BattleType"
                     input: false
