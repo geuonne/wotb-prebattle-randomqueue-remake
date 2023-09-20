@@ -1,0 +1,3 @@
+[submodule "coding-env"]
+	path = coding-env
+	url = git@github.com:geuonne/wotb-mod-coding-env.git

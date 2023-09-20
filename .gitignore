@@ -1,6 +1,7 @@
 # Build artifacts
 build/
-src/Gfx/Lobby/backgrounds/prebattle
+src/Gfx/Lobby/backgrounds/prebattle/
+src/UI/Screens3/Lobby/Prebattle/
 
 # Compressed files
 *.dvpl
