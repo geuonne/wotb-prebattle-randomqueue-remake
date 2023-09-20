@@ -26,4 +26,5 @@ RandomQueue.yaml: .gamemode_bg_updated
 	$(CP) $@ mod_$@
 	$(foreach i_gamemode,$(gamemodes),$(make_gamemode_bg_paths))
 	$(add_gamemode_bg_path_var)
-	$(CP) mod_$@ $(PROJECTROOT)/$(SRCDIR)/$(gamemode_file_prefix)/$@
+	$(MKDIR) -p $(PROJECTROOT)/$(SRCDIR)/UI/Screens3/Lobby/Prebattle
+	$(CP) mod_$@ $(PROJECTROOT)/$(SRCDIR)/UI/Screens3/Lobby/Prebattle/$@
