@@ -128,6 +128,21 @@ Prototypes:
                     verticalPolicy: "PercentOfChildrenSum"
             children:
             -   class: "UIControl"
+                name: "BattleTechnicalLabel"
+                input: false
+                visible: false
+                classes: "t-subtitle bold white-wild-sand-text"
+                components:
+                    UITextComponent:
+                        colorInheritType: "COLOR_IGNORE_PARENT"
+                    SizePolicy:
+                        horizontalPolicy: "PercentOfContent"
+                        verticalPolicy: "PercentOfContent"
+                    StyleSheet:
+                        styles: "~res:/UI/Screens3/Font.style.yaml"
+                bindings:
+                - ["UITextComponent.text", "str(battleQueue.mode.gameMode)"]
+            -   class: "UIControl"
                 name: "Head"
                 input: false
                 components:
