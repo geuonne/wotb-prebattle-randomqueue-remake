@@ -4,7 +4,7 @@ gamemode_file_prefix = Gfx/Lobby/backgrounds/prebattle
 gamemodes != $(YQ) '.[] | key' 0<gamemode_bg.yaml
 
 define download_gamemode_bg =
-$(eval url != $(YQ) '.$(i_gamemode)' 0<$@)
+$(eval url != $(YQ) '.$(i_gamemode)' 0<$^)
 $(CURL) '$(url)' | $(MAGICK) - -resize 2048x2048\! '$(PROJECTROOT)/$(SRCDIR)/$(gamemode_file_prefix)/bg_gameMode_$(i_gamemode).packed.webp' $(_STASEP)
 endef
 
@@ -18,10 +18,11 @@ $(eval _value = [["string", "gameModeBGPath", "when $(gamemode_bg_paths) \"\""]]
 $(YQ) --inplace '$(_component) += ($(_value))' mod_$@ $(_STASEP)
 endef
 
-gamemode_bg.yaml: $(PROJECTROOT)/$(SRCDIR)/$(gamemode_file_prefix)/*
+.gamemode_bg_updated: gamemode_bg.yaml
 	$(foreach i_gamemode,$(gamemodes),$(download_gamemode_bg))
+	$(TOUCH) $@
 
-RandomQueue.yaml: gamemode_bg.yaml
+RandomQueue.yaml: .gamemode_bg_updated
 	$(CP) $@ mod_$@
 	$(foreach i_gamemode,$(gamemodes),$(make_gamemode_bg_paths))
 	$(add_gamemode_bg_path_var)
