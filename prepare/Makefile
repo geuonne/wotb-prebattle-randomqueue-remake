@@ -9,7 +9,7 @@ $(CURL) '$(url)' | $(MAGICK) - -resize 2048x2048\! '$(PROJECTROOT)/$(SRCDIR)/$(g
 endef
 
 define make_gamemode_bg_paths =
-$(eval gamemode_bg_paths = $(gamemode_bg_paths) battleQueue.mode.gameMode == eGameMode.$(i_gamemode) -> \"~res:/$(gamemode_file_prefix)/bg_gameMode_$(i_gamemode)\",)
+$(eval gamemode_bg_paths = $(gamemode_bg_paths) battleQueue.mode.gameMode == $(i_gamemode) -> \"~res:/$(gamemode_file_prefix)/bg_gameMode_$(i_gamemode)\",)
 endef
 
 define add_gamemode_bg_path_var =
