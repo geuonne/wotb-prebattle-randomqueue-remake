@@ -156,20 +156,6 @@ Prototypes:
                         verticalPolicy: "PercentOfChildrenSum"
                 children:
                 -   class: "UIControl"
-                    name: "BattleLabel"
-                    input: false
-                    classes: "t-subtitle bold white-wild-sand-text"
-                    components:
-                        UITextComponent:
-                            colorInheritType: "COLOR_IGNORE_PARENT"
-                        SizePolicy:
-                            horizontalPolicy: "PercentOfContent"
-                            verticalPolicy: "PercentOfContent"
-                        StyleSheet:
-                            styles: "~res:/UI/Screens3/Font.style.yaml"
-                    bindings:
-                    - ["UITextComponent.text", "battleQueue.mode.gameModeOptions.title"]
-                -   class: "UIControl"
                     name: "BattleType"
                     input: false
                     components:
@@ -250,19 +236,6 @@ Prototypes:
                                         styles: "~res:/UI/Screens3/Font.style.yaml"
                                 bindings:
                                 - ["UITextComponent.text", "battleQueue.mode.gameModeOptions.title"]
-#                        -   class: "UIControl"
-#                            name: "Matchmaking"
-#                            input: false
-#                            visible: true
-#                            classes: "t-body regular white-wild-sand-50-text"
-#                            components:
-#                                UITextComponent:
-#                                    text: "Matchmaking"
-#                                SizePolicy:
-#                                    horizontalPolicy: "PercentOfContent"
-#                                    verticalPolicy: "PercentOfContent"
-#                                 StyleSheet:
-#                                    styles: "~res:/UI/Screens3/Font.style.yaml;~res:/UI/Screens3/Color.style.yaml"
                         -   class: "UIControl"
                             name: "TotalTanksHolder"
                             input: false
