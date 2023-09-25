@@ -1,0 +1,31 @@
+mod_entry:
+    # Mod name
+    name: "Prebattle RandomQueue Remake"
+    # One or many of: modpack, gfx, gfx/bulb, gfx/aim, sfx/crew, sfx/guns, sfx/music, sfx/gui, gui, gui/layout, optimization, 3d/hangar, 3d/vehicle, 3d/camo, localization, misc
+    tags:
+    - "gui/layout"
+    - "gfx"
+    # One or many authors
+    authors:
+    - "geuonne"
+    compatibility:
+        target_publisher: "any"
+        target_platform: "any"
+        target_patch: "any"
+        patch_tested: 1020
+    # Mod description
+    description:
+        ru: |
+            Переделывает экран очереди входа в бой:
+            - Иконка танка увеличена в 3 раза
+            - Остальные элементы перемещены в правую часть
+            - На заднем фоне отображен соответствующий выбранному игровому режиму арт.
+            - Другие твики (фон для кнопки выхода, сокращение вертикального пространства, занимаегого элементами, etc)
+        en: |
+            This mod revamps the battle queue screen:
+            - The tank icon is upscaled to 3x
+            - The rest of the elements is moved to the right side
+            - The selected game mode's corresponding keyart is displayed as background
+            - Other tweaks (display background for the back button, vertically shrink area, occupied by the controls, etc)
+    # Mod FAQ. Mostly is provided along with description
+    faq: {}
