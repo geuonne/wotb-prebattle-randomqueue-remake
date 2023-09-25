@@ -41,12 +41,15 @@ Prototypes:
         input: false
         components:
             Background:
-                drawType: "DRAW_STRETCH_BOTH"
+                drawType: "DRAW_SCALE_TO_RECT"
+            UIUrlImageComponent:
+                downscaleEnabled: false
+                upscaleForHighResolution: true
             SizePolicy:
                 horizontalPolicy: "PercentOfParent"
                 verticalPolicy: "PercentOfParent"
         bindings:
-        - ["Background.sprite", "gameModeBGPath"]
+        - ["UIUrlImageComponent.imageUrl", "gameModeBGPath"]
     -   class: "UIControl"
         name: "Fade"
         input: false
